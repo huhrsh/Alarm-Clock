@@ -1,34 +1,114 @@
 /* @import url('./fonts/clockicons.ttf'); */
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* creating the font */
 @font-face {
     font-family: 'clockicons';
     src: url('./fonts/clockicons.ttf');
- }
+}
+
+@keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(100vh);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+@keyframes fade-out-down {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100vh);
+    }
+  }
+
+  @keyframes swing {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(15deg);
+    }
+    75% {
+      transform: rotate(-15deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
   
-*{
-    margin:0;
+
+  @keyframes headshake {
+    0% {
+      transform: rotate(0deg);
+    }
+    20% {
+      transform: rotate(-10deg);
+    }
+    40% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(-10deg);
+    }
+    80% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes button-press {
+    0%{
+        transform: translateY(0px) scale(1);
+    }
+    50%{
+        transform: translateY(4px) scale(0.9);
+    }
+    100%{
+        transform: translateY(0px) scale(1);
+    }
+  }
+
+/* resetting all elements */
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
-    background: linear-gradient(to right, #d3cce3, #e9e4f0);
+/*adding  background */
+
+html {
+    /* background: linear-gradient(to right, #d3cce3, #ffffff);
+    background: linear-gradient(to right, #F2F2F2, #EAEAEA); */
     background: #fff;
-    /* background: #f5ebe0; */
 }
 
-html::-webkit-scrollbar{
+/* removing scrollbar  */
+
+html::-webkit-scrollbar {
     display: none;
 }
 
+/* removing the arrows from number inputs  */
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-h1{
-    font-weight:200;
+h1 {
+    font-weight: 200;
     font-family: poppins;
     letter-spacing: 1vw;
     margin: auto;
@@ -36,7 +116,8 @@ h1{
     font-size: 5vw;
 }
 
-.background-clock{
+/* css for the background analog clock  */
+.background-clock {
     height: 38vw;
     width: 38vw;
     top: 15%;
@@ -49,56 +130,68 @@ h1{
     justify-content: center;
     z-index: -2;
 }
-.background-clock>div{
+
+/* hands of the clock  */
+.background-clock>div {
     position: absolute;
     padding-top: 1%;
 }
 
-.second-hand{
+.second-hand {
     height: 38vw;
     width: 2.5vh;
     opacity: 0;
 }
-.minute-hand{
+
+.minute-hand {
     height: 36.5vw;
-    width:5vh;
+    width: 5vh;
     opacity: 0;
 }
-.hour-hand{
+
+.hour-hand {
     height: 35vw;
     width: 7.5vh;
     opacity: 0;
 }
 
-.hour-hand-circle,.minute-hand-circle,.second-hand-circle{
+/* dots within the hands of the clock  */
+
+.hour-hand-circle,
+.minute-hand-circle,
+.second-hand-circle {
     border-radius: 50%;
     background-color: #1d1d1d;
     opacity: 20%;
 }
-.second-hand-circle{
-    height:2.5vh;
+
+.second-hand-circle {
+    height: 2.5vh;
     width: 2.5vh;
 }
 
-.minute-hand-circle{
-    height:5vh;
+.minute-hand-circle {
+    height: 5vh;
     width: 5vh;
 }
 
-.hour-hand-circle{
+.hour-hand-circle {
     height: 7.5vh;
     width: 7.5vh;
 }
 
-.main-container{
+/* contains all the content  */
+
+.main-container {
     padding: 1%;
     width: 80vw;
     height: auto;
     margin: auto;
-    /* background-color: antiquewhite; */
 }
 
-.time-section-background{
+/* section for displaying the time background */
+
+.time-section-background {
     font-size: 16vw;
     font-family: clockicons;
     position: absolute;
@@ -109,8 +202,9 @@ h1{
     left: 19.7%;
 }
 
-.time-section{
-    /* background-color: red; */
+
+/* section for displaying the time */
+.time-section {
     height: 100%;
     width: 100%;
     display: flex;
@@ -118,14 +212,15 @@ h1{
     align-items: center;
 }
 
-.current-time{
+.current-time {
     color: #1f1f1f;
     font-family: clockicons;
     font-size: 16vw;
 }
 
-.week-section{
-    /* background-color: aliceblue; */
+/* day and date section */
+
+.week-section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,25 +229,25 @@ h1{
     font-size: 3.6vw;
 }
 
-.alarms-section{
+/* alarms section  */
+
+.alarms-section {
     margin-top: 18vw;
     padding-top: 2vw;
     height: auto;
     width: 100%;
-    /* background-color: red; */
     flex-direction: column;
     display: flex;
     align-items: center;
-    /* justify-content: center;    */
 }
 
-.create-alarm-button{
-    background:linear-gradient(#525252,#525252);
+.create-alarm-button {
+    background: linear-gradient(#525252, #525252);
     border: none;
     border-bottom: 4px solid black;
     border-radius: 15px;
     height: fit-content;
-    padding:0 5%;
+    padding: 0 5%;
     font-weight: 300;
     width: max-content;
     font-family: poppins;
@@ -161,55 +256,73 @@ h1{
     cursor: pointer;
     transition: all ease-in-out 0.6s;
 }
-button:hover{
-    background: linear-gradient(-130deg,#525252,#333);
+
+/* adding hover properties  */
+button:hover {
+    background: linear-gradient(-130deg, #525252, #333);
 }
 
-.create-alarm-screen{
+/* adding button press effect  */
+.create-alarm-button:active {
+    transform: translateY(20px) scale(0.9);
+    box-shadow: none;
+}
+
+input:active{
+    transform: scale(0.97);
+    
+}
+/* popup screen  */
+.create-alarm-screen {
     top: 0;
-    position:fixed;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width:100vw;
+    width: 100vw;
     z-index: 2;
     background-color: #33333388;
     display: none;
+    animation: fade-in-up 1.4s;
 }
 
-.create-alarm-screen img{
+/* human figure  */
+.create-alarm-screen img {
     position: absolute;
     height: 50vh;
     top: 37.5vh;
     left: 1vw;
 }
 
-.popup-container{
+/* container for alarm details  */
+.popup-container {
     width: 70vw;
-    height:70vh;
+    height: 70vh;
     border-radius: 15px;
     background-color: rgba(245, 245, 245, 0.947);
     padding: 1%;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
 }
-.popup-container-heading{
+
+.popup-container-heading {
     text-transform: uppercase;
-    font: 200 4.6vw 'poppins' ;
+    font: 200 4.6vw 'poppins';
     /* background-color: blue; */
     margin: -1% 0;
 }
 
-h2{
+h2 {
     font-family: poppins;
     font-weight: 100;
     font-size: 4.5vw;
 }
 
-form{
+/* form for alarm details  */
+
+form {
     height: max-content;
     width: 100%;
     padding: 1%;
@@ -217,11 +330,9 @@ form{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    /* background-color: beige; */
 }
 
-.popup-sub-container{
-    /* background-color: red; */
+.popup-sub-container {
     width: max-content;
     height: auto;
     display: flex;
@@ -229,7 +340,8 @@ form{
     align-items: center;
 }
 
-.popup-button{
+
+.popup-button {
     cursor: pointer;
     height: 10vh;
     width: 20vw;
@@ -241,60 +353,54 @@ form{
     color: whitesmoke;
 }
 
-form section{
+form section {
     margin: 1% 0;
-    font:100 3vw poppins;
+    font: 100 3vw poppins;
     padding: 0;
-    /* background-color: rebeccapurple; */
 }
-.time-input{
+
+/* section for time input  */
+.time-input {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
 }
-.time-input section{
+
+.time-input section {
     font-size: 2.6vw;
 }
-input{
+
+input {
     padding: 2%;
     border-radius: 10px;
     border: 2px solid #33333350;
     background-color: whitesmoke;
     font: 300 2vw MONOSPACE;
     min-width: 100px;
-    /* font: 300 2vw;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
     color: #333;
 }
 
-input:focus{
+input:focus {
     outline: none;
 }
 
-.toggle-switch {
-    background-color: red;
-    position: relative;
-    width: 200px;
-    height: 50px;
-}
- 
-
-.your-alarms-container{
+/* container where alarms will be displayed */
+.your-alarms-container {
     width: 60vw;
     height: auto;
     background: #33333330;
     border-radius: 15px;
 }
 
-.alarm-list{
+/* list that contains the alarms  */
+.alarm-list {
     list-style: none;
     margin: 0;
     padding: 1%;
-    /* background-color: blue; */
 }
 
-.individual-alarm{
+.individual-alarm {
     width: 100%;
     padding: 1% 5%;
     height: auto;
@@ -302,41 +408,40 @@ input:focus{
     min-height: 20vh;
     border-radius: 15px;
     display: flex;
-    background-color:rgba(245, 245, 245, 0.90);
+    background-color: rgba(245, 245, 245, 0.90);
     justify-content: space-between;
     align-items: center;
 }
 
-.individual-alarm-name::-webkit-scrollbar{
+.individual-alarm-name::-webkit-scrollbar {
     display: none;
 }
 
-.individual-alarm-name{
+.individual-alarm-name {
     width: 65%;
-    /* background-color: red; */
-    font:  300 3.6vw poppins ;
+    font: 300 3.6vw poppins;
     text-transform: capitalize;
     overflow: auto;
 }
 
-.individual-alarm-time{
-    /* background-color: purple; */
+.individual-alarm-time {
     width: 25%;
     font: 100 4vw clockicons;
 }
 
-.trash-can{
+.trash-can {
     font-size: 2.4vw;
     opacity: 1;
-    color: #333
-    ;
+    color: #333;
     cursor: pointer;
 }
-.trash-can:hover{
+
+.trash-can:hover {
     color: #000;
+    animation: swing 1s;
 }
 
-.individual-alarm-background{
+.individual-alarm-background {
     font-size: 4vw;
     font-family: clockicons;
     position: absolute;
@@ -344,40 +449,4 @@ input:focus{
     color: #333;
     right: 30.75%;
     opacity: 0.06;
-    /* top: 18%;
-    left: 19.7%; */
 }
-
-
-
-
-
-
-
-
-/* .clock-outer{
-    display: flex;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    margin-left: 30vw;
-    margin-top: 5vw;
-    background-color: aliceblue;
-    height: 40vw;
-    width: 40vw;
-    border-radius: 50%;
-}
-
-.clock-hand{
-    transform: skewY(20);
-    animation: clock 5s infinite;
-    width: 35vw;
-    height: 2vh;
-    background-color: #333;
-}
-span{
-    display: inline-block;
-    width: 50%;
-    background-color: aliceblue;
-    height: 3vh;
-} */

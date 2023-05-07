@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <!-- Meta tags -->
-    <meta name="author" content="Harsh Bhadwa Jain">
+    <meta name="author" content="Harsh Jain">
     <meta name="description" content="Created an alarm clock website using HTML, CSS and JavaScript.">
-    <meta name="keywords" content="alarm clock, HTML,CSS, JavaScript">
+    <meta name="keywords" content="alarm clock, HTML, CSS, JavaScript">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./images/alarm-clock.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
     <script src="https://kit.fontawesome.com/501910dff8.js" crossorigin="anonymous"></script>
     <title>Alarm Clock</title>
     <!-- linking css and js files  -->
@@ -61,87 +61,55 @@
                 <!-- section for the alarm button  -->
                 <section class="alarm-button-section">
                     <!-- alarm button  -->
-                    <button class="create-alarm-button animate__animated animate__faster" type="button" name="create-alarm-button" id="alarm-popup-button">
+                    <button class="create-alarm-button " type="button" name="create-alarm-button" id="alarm-popup-button">
                         Create Alarm
                     </button>
                 </section>
                 <!-- list of alarms that you have already set  -->
                 <h2>Your Alarms</h2>
                 <section class="your-alarms-container">
+                    <!-- list that contains the alarm  -->
                     <ul class="alarm-list">
-                        <!-- <li class="individual-alarm" >
-                                <p class="individual-alarm-name">sleep</p>
-                                <p class="individual-alarm-time">14:22</p>
-                        </li> -->
-                        <!-- <li>
-                            <section class="individual-alarm">
-                            </section>
-                        </li> -->
+                        <!-- individual alarms to come here  -->
                     </ul>
                 </section>
-
             </section>
         </main>
-        <section class="create-alarm-screen animate__animated" id="create-alarm-screen" >
-            <img id="human-image" class="animate__animated" src="./images/standing-human.png" alt="human-image">
+        <!-- creating the popup screen that comes when you click on create alarm button  -->
+        <section class="create-alarm-screen" id="create-alarm-screen" >
+            <!-- human figure  -->
+            <img id="human-image"  src="./images/standing-human.png" alt="human-image">
+            <!-- container where you set alarm details  -->
             <section class="popup-container">
                 <p class="popup-container-heading" >Select Time</p>
+                <!-- form for alarm details  -->
                 <form action="" method="">
+                    <!-- alarm name input  -->
                     <section class="popup-sub-container">
                         <p>Alarm Name</p>
                         <input type="text" name="name" required placeholder="Alarm Name">
                     </section>
+                    <!-- time input  -->
                     <section class="time-input">
+                        <!-- hours input  -->
                         <section class="popup-sub-container">
                             <p>Hours</p>
                             <input type="number" name="hour" min="0" required max="23">
                         </section>
+                        <!-- minuetes input  -->
                         <section class="popup-sub-container">
                             <p>Minutes</p>
                             <input type="number" name="minuetes" min="0" required max="59">
                         </section>
                     </section>
+                    <!-- button section  -->
                     <section class="popup-sub-container">
-                        <button type="submit" class="popup-button animate__animated animate__faster" id="popup-create-alarm">
+                        <button type="submit" class="popup-button" id="popup-create-alarm">
                             Create Alarm
                         </button>
                     </section>
                 </form>
             </section>
-        </section>
-        <!-- <a href="./fonts/clockicons.ttf" download>beti</a> -->
-        <!-- <div id='alarm-container'>
-			<h3>Set Alarm Time</h3>
-				<label>
-					<div>
-					<select id='alarmhrs' ></select>
-					</div>
-				</label>
-				<label>
-					<div>
-					<select id='alarmmins' ></select>
-					</div>
-				</label>
-				<label>
-					<div>
-					<select id='alarmsecs' ></select>
-					</div>
-				</label>
-				<label>
-					<div>
-						<select id="ampm">
-							<option value="AM">AM</option>
-							<option value="PM">PM</option>
-						</select>
-					</div>
-				</label>
-				</div>
-		</div> -->
-        <!-- <div class = 'toggle-switch'>
-            <label>
-                <input type = 'checkbox'>
-                <span class = 'slider'></span>
-            </label>
-        </div> -->
+        </section>    
     </body>
 </html>
